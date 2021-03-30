@@ -1,10 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import { Container } from "react-bootstrap";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+
+/**Componentes */
+import { Landing } from "./component/landingPage/landing";
+import { Login } from "./component/login/login";
+import { Todolist } from "./component/todolist/todolist";
+/** */
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -21,20 +29,26 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
+					<Container>
+						<Switch>
+							<Route exact path="/">
+								<Landing />
+							</Route>
+							<Route exact path="/login">
+								<Login />
+							</Route>
+							<Route exact path="/todolist">
+								<Todolist />
+							</Route>
+							<Route exact path="/single/:theid">
+								<Single />
+							</Route>
+							<Route>
+								<h1>Not found!</h1>
+							</Route>
+						</Switch>
+					</Container>
+
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
