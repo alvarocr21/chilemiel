@@ -10,14 +10,12 @@ export const Todolist = () => {
 
 	const validaTarea = () => {
 		if (tarea === "") {
-			//return <Alert variant="danger">Debe ingresar algún valor para agregar la tarea</Alert>;
-			//alert("");
 			setAlertFail(true);
 		} else {
 			setTareas([
 				...tareas,
 				{
-					id: tareas.length,
+					estado: false,
 					nombre: tarea
 				}
 			]);
@@ -38,7 +36,7 @@ export const Todolist = () => {
 		setHechas([
 			...hechas,
 			{
-				id: hechas.length,
+				estado: true,
 				nombre: newList[indice].nombre
 			}
 		]);
@@ -52,7 +50,7 @@ export const Todolist = () => {
 		setTareas([
 			...tareas,
 			{
-				id: tareas.length,
+				estado: false,
 				nombre: newList[indice].nombre
 			}
 		]);
@@ -112,22 +110,12 @@ export const Todolist = () => {
 												</button>
 											</OverlayTrigger>
 											<OverlayTrigger
-												key="top"
-												placement="top"
-												overlay={<Tooltip id="tooltip-top">Editar</Tooltip>}>
-												<button
-													type="button"
-													className="btn btn-warning btn-sm float-right mx-1">
-													<i className="fas fa-edit" />
-												</button>
-											</OverlayTrigger>
-											<OverlayTrigger
 												key="Terminar"
 												placement="top"
 												overlay={<Tooltip id="tooltip-top">Terminar</Tooltip>}>
 												<button
 													type="button"
-													className="btn btn-success btn-sm float-right"
+													className="btn btn-warning btn-sm float-right mr-1"
 													onClick={() => cambiaHechas(index)}>
 													<i className="fas fa-check" />
 												</button>
