@@ -11,6 +11,8 @@ import { Single } from "./views/single";
 import { Landing } from "./component/landingPage/landing";
 import { Login } from "./component/login/login";
 import { Todolist } from "./component/todolist/todolist";
+import { Comprar } from "./component/comprar/comprar";
+import { Vendedor } from "./component/vendedor/vendedor";
 /** */
 
 import injectContext from "./store/appContext";
@@ -39,6 +41,12 @@ const Layout = () => {
 							</Route>
 							<Route exact path="/todolist">
 								<Todolist />
+							</Route>
+							<Route exact path="/comprar">
+								<Comprar />
+							</Route>
+							<Route exact path="/vendedor">
+								<Vendedor />
 							</Route>
 							<Route exact path="/single/:theid">
 								<Single />

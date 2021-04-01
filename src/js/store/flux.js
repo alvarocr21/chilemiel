@@ -15,12 +15,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					email: "invitado@gmail.com",
 					clave: "54321"
 				}
-			]
+			],
+			nombreActivo: "",
+			rutaIni: "/"
 		},
 		actions: {
 			setLog: estado => {
-				const store = getStore();
 				setStore({ logeado: estado });
+			},
+			setNombreActivo: nombre => {
+				setStore({ nombreActivo: nombre });
 			}
 		}
 	};

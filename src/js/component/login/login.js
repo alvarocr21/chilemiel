@@ -6,22 +6,16 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [clave, setClave] = useState("");
-	const [redirige, setRedirige] = useState("");
+	//const [redirige, setRedirige] = useState("");
 	const [alertFail, setAlertFail] = useState(false);
 
 	const validar = () => {
 		store.usuarios.map((item, index) => {
-			let contar = 0;
 			if (item.email == email) {
 				if (item.clave == clave) {
 					actions.setLog(true);
-					setRedirige("/todolist");
-					contar++;
+					actions.setNombreActivo(item.nombre);
 				}
-			}
-			if (contar == 0) {
-				setAlertFail(true);
-				setRedirige("");
 			}
 		});
 	};
@@ -61,7 +55,7 @@ export const Login = () => {
 							/>
 						</Form.Group>
 						<div className="d-flex justify-content-between">
-							<Link to={redirige}>
+							<Link to={"/"}>
 								<Button variant="primary" type="submit" onClick={validar}>
 									Aceptar
 								</Button>
