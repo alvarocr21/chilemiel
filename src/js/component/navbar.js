@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Nav } from "react-bootstrap";
+import { Nav, DropdownButton, Dropdown } from "react-bootstrap";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -45,7 +45,20 @@ export const Navbar = () => {
 				</Link>
 			</div>
 
-			<div className="ml-auto">
+			<div className="ml-auto d-flex inline">
+				<DropdownButton
+					className={`mx-3 ${ocultarLogout}`}
+					id="dropdown-basic-button"
+					title={`Productos ${store.carrito.length}`}
+					variant="success">
+					{store.carrito.map((item, index) => {
+						return (
+							<Dropdown.Item key={index} href="#/action-1" onClick={() => actions.setCompras(item)}>
+								<i className="fas fa-trash-alt" /> {item}
+							</Dropdown.Item>
+						);
+					})}
+				</DropdownButton>
 				<strong className={`mx-3 ${ocultarLogout}`}>{store.nombreActivo}</strong>
 				<Link to="/">
 					<button
